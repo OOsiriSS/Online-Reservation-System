@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>订餐系统</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="../vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Morris Charts CSS -->
+    <link href="../vendor/morrisjs/morris.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">订餐系统 </a>
+            </div>
+            <!-- /.navbar-header -->
+
+            <ul class="nav navbar-top-links navbar-right">
+                <!-- /.dropdown -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+
+                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> 退出</a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-user -->
+                </li>
+                <!-- /.dropdown -->
+            </ul>
+            <!-- /.navbar-top-links -->
+
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        <li class="sidebar-search">
+                            <div class="input-group custom-search-form">
+                                <input type="text" class="form-control" placeholder="Search...">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </span>
+                            </div>
+                            <!-- /input-group -->
+                        </li>
+                        <li>
+                            <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> 主页</a>
+                        </li>
+                        <li>
+                            <a href="blank.html"><i class="fa fa-edit fa-fw"></i> 送餐记录</a>
+                        </li>
+                        <li></li>
+                    </ul>
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+        </nav>
+
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">主页</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-comments fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge user">26</div>
+                                    <div>总会员数</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-green">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-tasks fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge restaurant">123</div>
+                                    <div>总餐厅数</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-yellow">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-shopping-cart fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge">124</div>
+                                    <div>成交订单</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-red">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-support fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge">13</div>
+                                    <div>Support Tickets!</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            餐厅信息
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <form>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">餐厅姓名</label>
+                                        <input type="text" class="form-control" id="name" placeholder="餐厅姓名">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword1">餐厅地址</label>
+                                        <input type="text" class="form-control" id="address" placeholder="餐厅地址">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword1">餐厅密码</label>
+                                        <input type="password" class="form-control" id="password"
+                                            placeholder="留空则不修改密码">
+                                    </div>
+                                    <button type="button" class="btn btn-primary" onclick="handleClick()">修改</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            商品列表 &nbsp;&nbsp;<button type="button" class="btn btn-info btn-xs" data-toggle="modal"
+                                data-target="#myModal">上架商品</button>
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>菜名</th>
+                                            <th>描述</th>
+                                            <th>价格</th>
+                                            <th>操作</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="result">
+                                        <script type="text/x-jsrender" id="Tmpl">
+                                                    <tr>
+                                                        <td>{{:goodsId}}</td>
+                                                        <td>{{:goodsName}}</td>
+                                                        <td>{{:goodsDescribe}}</td>
+                                                        <td>{{:goodsPrice}}￥</td>
+                                                        <td>
+                                                                <button type="button" onclick="show('{{:goodsId}}')" class="btn btn-success btn-xs" >添加优惠</button>
+                                                        </td>
+                                                    </tr>
+                                                </script>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.table-responsive -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                </div>
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="addDiscount" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">添加优惠</h4>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">优惠描述</label>
+                            <input type="text" class="form-control" name="preferentialDescribe" placeholder="描述">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">优惠比率</label>
+                            <input type="text" class="form-control" name="ratio" placeholder="价格">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">过期时间</label>
+                            <input type="text" class="form-control" name="overdue" placeholder="数量">
+                        </div>
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" onclick="add()">添加</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">添加商品</h4>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">商品名称</label>
+                            <input type="text" class="form-control" name="name" placeholder="名称">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">商品描述</label>
+                            <input type="text" class="form-control" name="describe" placeholder="描述">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">商品价格</label>
+                            <input type="text" class="form-control" name="price" placeholder="价格">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">商品数量</label>
+                            <input type="text" class="form-control" name="number" placeholder="数量">
+                        </div>
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" onclick="addGoods()">添加</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- jQuery -->
+    <script src="../vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="../vendor/metisMenu/metisMenu.min.js"></script>
+
+    <!-- Morris Charts JavaScript -->
+    <script src="../vendor/raphael/raphael.min.js"></script>
+    <script src="../vendor/morrisjs/morris.min.js"></script>
+    <script src="../data/morris-data.js"></script>
+    <script src="../dist/js/sb-admin-2.js"></script>
+    <script src="../js/api.js"></script>
+    <script src="../js/jrender.js"></script>
+    <script src="https://ciphertrick.com/demo/jquerysession/js/jquerysession.js"></script>
+
+
+    <script>
+        var userId;
+        if (typeof ($.session.get('busin')) == "undefined") {
+            window.location.href = 'login.html'
+        }
+        let user = JSON.parse($.session.get('busin'));
+        console.log(user);
+        $("#address").val(user.restaurantAddress);
+        $("#name").val(user.restaurantName);
+
+        $.get(url + "/goods/findProductByRestaurant", { restaurantId: user.restaurantId }, function (res) {
+            if (res.data.length == 0) {
+                alert("您还没有上架任何商品")
+            }
+            data = res.data;
+            var html2 = $("#Tmpl").render(data);
+            $("#result").append(html2);
+        })
+        function handleClick() {
+            let data = {
+                restaurantId: user.restaurantId,
+                restaurantAddress: $("#address").val(),
+                restaurantName: $("#name").val(),
+                restaurantPass: $("#password").val()
+            }
+            $.ajax({
+                type: "POST",
+                url: url + "/restaurant/updateMerchantsInfo",
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify(data),
+                dataType: "json",
+                success: function (res) {
+                    alert("修改成功")
+                    $.session.clear();
+                    window.location.href = "login.html"
+                },
+                error: function (message) {
+                    alert("错误")
+                }
+            });
+        }
+        function addGoods() {
+            let name = $("input[name='name']").val();
+            let describe = $("input[name='describe']").val();
+            let price = $("input[name='price']").val();
+            let number = $("input[name='number']").val();
+            if (name != "" || describe != "" || price != "" || number != "") {
+                let data = {
+                    "goodsDescribe": describe,
+                    "goodsName": name,
+                    "goodsPrice": price,
+                    "goodsStock": number,
+                    "typeId": 1,
+                    "restaurantId": user.restaurantId,
+                }
+                $.ajax({
+                    type: "POST",
+                    url: url + "/restaurant/productRelease",
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify(data),
+                    dataType: "json",
+                    success: function (res) {
+                        alert("添加成功");
+                        window.location.href = "./index.html"
+                    },
+                    error: function (message) {
+                        alert("错误")
+                    }
+                });
+            } else {
+                alert("各项不能为空")
+            }
+        }
+
+        function show(id){
+            userId=id;
+            $('#addDiscount').modal('show')
+        }
+
+        function add() {
+            let preferentialDescribe = $("input[name='preferentialDescribe']").val();
+            let ratio = $("input[name='ratio']").val();
+            let overdue = $("input[name='overdue']").val();
+            if (preferentialDescribe != "" || ratio != "" || overdue != "") {
+                let data = {
+                    "goodsId": userId,
+                    "overdue": overdue,
+                    "preferentialDescribe": preferentialDescribe,
+                    "ratio": ratio
+                }
+                $.ajax({
+                    type: "POST",
+                    url: url + "/restaurant/addPreferential",
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify(data),
+                    dataType: "json",
+                    success: function (res) {
+                        alert("添加成功");
+                        window.location.href = "./index.html"
+                    },
+                    error: function (message) {
+                        alert("错误")
+                    }
+                });
+            } else {
+                alert("各项不能为空")
+            }
+
+        }
+    </script>
+</body>
+
+</html>

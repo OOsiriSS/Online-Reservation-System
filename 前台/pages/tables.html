@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>商品列表</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="../vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+
+    <!-- DataTables CSS -->
+    <link href="../vendor/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
+
+    <!-- DataTables Responsive CSS -->
+    <link href="../vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <style>
+        .clickBorder {
+            border-color: #000;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">订餐系统</a>
+            </div>
+            <!-- /.navbar-header -->
+
+            <ul class="nav navbar-top-links navbar-right">
+
+                <!-- /.dropdown -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                            <li><a href="user.html"><i class="fa fa-user fa-fw"></i> 个人信息</a>
+                            </li>
+                            <li class="divider"></li>
+                            <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> 退出</a>
+                            </li>
+                    </ul>
+                    <!-- /.dropdown-user -->
+                </li>
+                <!-- /.dropdown -->
+            </ul>
+            <!-- /.navbar-top-links -->
+
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        <li class="sidebar-search">
+                            <div class="input-group custom-search-form">
+                                <input type="text" class="form-control" placeholder="Search...">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </span>
+                            </div>
+                            <!-- /input-group -->
+                        </li>
+                        <li>
+                                <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> 主页</a>
+                            </li>
+                            <li>
+                                <a href="panels-wells.html"><i class="fa fa-edit fa-fw"></i> 订餐</a>
+                            </li>
+                            <li>
+                                    <a href="blank.html"><i class="fa fa-files-o fa-fw"></i> 订单</a>
+                                </li>
+                            <li></li>
+                    </ul>
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+        </nav>
+
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">商品列表</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+
+            <!-- /.row -->
+
+            <!-- /.row -->
+
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            商品列表
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>菜名</th>
+                                            <th>描述</th>
+                                            <th>价格</th>
+                                            <th>操作</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="result">
+                                        <script type="text/x-jsrender" id="Tmpl">
+                                            <tr>
+                                                <td>{{:goodsId}}</td>
+                                                <td>{{:goodsName}}</td>
+                                                <td>{{:goodsDescribe}}</td>
+                                                <td>{{:goodsPrice}}￥</td>
+                                                <td>
+                                                        <button type="button" onclick="addCart('{{:#getIndex()}}')" class="btn btn-success btn-xs">购买</button>
+                                                </td>
+                                            </tr>
+                                        </script>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.table-responsive -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            购物车
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>菜名</th>
+                                            <th>价格</th>
+                                        </tr>
+                                    </thead>
+                                    <script type="text/x-jsrender" id="Tmpl2">
+                                            <tr>
+                                                <td>{{:goodsId}}</td>
+                                                <td>{{:goodsName}}</td>
+                                                <td>{{:goodsPrice}}￥</td>
+                                            </tr>
+                                    </script>
+                                    <tbody id="car_result">
+
+                                    </tbody>
+                                </table>
+                                <button type="button" class="btn btn-success" onclick="handleClick()"> 结算</button>
+                            </div>
+                            <!-- /.table-responsive -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+            </div>
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">结算订单</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row" id="address_result">
+
+                    </div>
+                    <div class="row" id="address" style="display:none;">
+
+                        <div class="col-md-4">
+                            <a href="#">返回结算页面</a>
+                            <hr />
+                            <form>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">姓名</label>
+                                    <input type="text" class="form-control" name="name" placeholder="姓名">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">手机号码</label>
+                                    <input type="text" class="form-control" name="phone" placeholder="手机号码">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">收货地址</label>
+                                    <input type="text" class="form-control" name="address" placeholder="收货地址">
+                                </div>
+                                <button type="button" class="btn btn-info" onclick="addAddress()">提交</button>
+                            </form>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-info" id="addAddress"
+                        onclick="handleaddAddressClick()">添加收货地址</button>
+                    <script type="text/x-jsrender" id="Tmpl3">
+                        <div class="col-md-4">
+                        <div class="panel panel-default">
+                                <div class="panel-body">
+                                #<span>{{:addressId}}</span>&nbsp;<span>{{:addressValue}}</span>
+                                </div>
+                                <div class="panel-footer">{{:addressName}}<span class="pull-right">{{:addressPhone}}</span></div>
+                            </div>
+                        </div>
+                </script>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" onclick="buy()">立即购买</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="../vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../vendor/metisMenu/metisMenu.min.js"></script>
+    <script src="../vendor/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="../vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
+    <script src="../vendor/datatables-responsive/dataTables.responsive.js"></script>
+    <script src="../dist/js/sb-admin-2.js"></script>
+    <script src="../js/api.js"></script>
+    <script src="../js/jrender.js"></script>
+    <script src="https://ciphertrick.com/demo/jquerysession/js/jquerysession.js"></script>
+    <script>
+        let user = JSON.parse($.session.get('user'));
+        if (typeof ($.session.get('user')) == "undefined") {
+                window.location.href = 'login.html'
+        }
+        let car = [];
+        let data;
+        let addressId;//地址id
+        let addressValue;//详细地址
+        let orderId = 0;
+        let business;//商家
+        let businessXy;//商家经纬度
+        let addressXy;//收货经纬度
+        $(document).ready(function () {
+            $.get(url+"/restaurant/findRestaurantById",{id:GetQueryString("id")},function(res){
+                console.log(res.data);
+                business = res.data;
+            })
+            $.get(url + "/goods/findProductByRestaurant", { restaurantId: GetQueryString("id") }, function (res) {
+                if (res.data.length == 0) {
+                    alert("该商家暂时没有商品")
+                    history.go(-1);
+                }
+                data = res.data;
+                var html2 = $("#Tmpl").render(data);
+                $("#result").append(html2);
+            })
+        });
+        function GetQueryString(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return unescape(r[2]); return null;
+        }
+        function addCart(goodsId) {
+            car.push(data[goodsId])
+            var html2 = $("#Tmpl2").render(car);
+            console.log(html2);
+            $("#car_result").html(html2);
+        }
+        $('.row').on('click', '.col-md-4 .panel', function () {
+            $(".col-md-4 .panel").removeClass("clickBorder");
+            $(this).toggleClass("clickBorder");
+            addressId = $(this).find("span").eq(0).text();
+            addressValue = $(this).find("span").eq(1).text();
+        })
+        function handleClick() {
+            if (car.length == 0) {
+                alert("请先添加商品到购物车");
+                return false;
+            }
+            getAddressList();
+
+        }
+        function getAddressList() {
+            $.get(url + "/address/findAddressList", { user: user.userId }, function (res) {
+                $('#myModal').modal('show');
+                var html2 = $("#Tmpl3").render(res.data);
+                $("#address_result").html(html2);
+            })
+        }
+        function handleaddAddressClick() {
+            $("#address_result").hide();
+            $("#addAddress").hide();
+            $("#address").show();
+        }
+        //添加收货地址
+        function addAddress() {
+            let name = $("input[name='name']").val();
+            let phone = $("input[name='phone']").val();
+            let address = $("input[name='address']").val();
+            if (name != "" || phone != "" || address != "") {
+                let data = {
+                    "addressPhone": phone,
+                    "addressName": name,
+                    "addressValue": address,
+                    "userId": user.userId
+                }
+                $.ajax({
+                    type: "POST",
+                    url: url + "/address/addAddress",
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify(data),
+                    dataType: "json",
+                    success: function (res) {
+                        alert("添加成功");
+                        $("#address_result").show();
+                        $("#addAddress").show();
+                        $("#address").hide();
+                        getAddressList();
+                    },
+                    error: function (message) {
+                        alert("错误")
+                    }
+                });
+            } else {
+                alert("各项不能为空");
+                return false;
+            }
+        }
+        //购买
+        function buy() {
+            $.ajax({
+                    type: "GET",
+                    url: "http://api.map.baidu.com/geocoder/v2/?address="+business.restaurantAddress+"&output=json&ak=5XccLkq4m68GleZjSijyZr6sCgsvhG61",
+                    dataType: "jsonp",
+                    success: function (res) {
+                        businessXy = res.result.location;
+                        $.ajax({
+                            type: "GET",
+                            url: "http://api.map.baidu.com/geocoder/v2/?address="+addressValue+"&output=json&ak=5XccLkq4m68GleZjSijyZr6sCgsvhG61",
+                            dataType: "jsonp",
+                            success: function (res) {
+                                addressXy = res.result.location;
+                                let Xy = [
+                                    {
+                                        "lan": businessXy.lng,
+                                        "lon": businessXy.lat
+                                    },
+                                    {
+                                        "lan": addressXy.lng,
+                                        "lon": addressXy.lat
+                                    }
+                                ]
+                                $.ajax({
+                                        type: "POST",
+                                        url: url + "/user/distance",
+                                        contentType: "application/json; charset=utf-8",
+                                        data: JSON.stringify(Xy),
+                                        dataType: "json",
+                                        success: function (res) {
+                                            if(res.data > 10){//计算出直线距离
+                                                alert("配送距离大于10km,换个商家吧")
+                                            }else{
+                                                if (orderId == 0) {
+                                                $.ajax({
+                                                    type: "POST",
+                                                    url: url + "/user/saveOrders?userId=" + user.userId + "&addressId=" + addressId,
+                                                    contentType: "application/json; charset=utf-8",
+                                                    data: JSON.stringify(car),
+                                                    dataType: "json",
+                                                    success: function (res) {
+                                                        orderId = res.data;
+                                                        if (confirm("你确定支付吗？")) {
+                                                            $.post(url + "/user/commitOrder", { orderId: orderId, userId: user.userId }, function (res) {
+                                                                if (res.status == 200) {
+                                                                    alert("支付成功");
+                                                                    history.go(-1);
+                                                                } else {
+                                                                    alert(res.msg);
+                                                                    history.go(-1);
+                                                                }
+                                                            })
+                                                        }
+                                                    },
+                                                    error: function (message) {
+                                                        alert("错误")
+                                                    }
+                                                });
+                                            } else {
+                                                if (confirm("你确定支付吗？")) {
+                                                    $.post(url + "/user/commitOrder", { orderId: orderId, userId: user.userId }, function (res) {
+                                                        if (res.status == 200) {
+                                                            alert("支付成功");
+                                                            history.go(-1);
+                                                        } else {
+                                                            alert(res.msg);
+                                                            history.go(-1);
+                                                        }
+                                                    })
+                                                }
+                                            }
+                                            }
+                                        },
+                                        error: function (message) {
+                                            alert("错误")
+                                        }
+                                    });
+                            },
+                            error: function (message) {
+                                alert("错误")
+                            }
+                    });
+                    },
+                    error: function (message) {
+                        alert("错误")
+                    }
+            });
+            
+            
+        }
+    </script>
+
+</body>
+
+</html>
