@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.takeout.mapper.GoodsDAO">
+  <resultMap id="BaseResultMap" type="com.example.takeout.entity.Goods">
+    <id column="goods_id" jdbcType="INTEGER" property="goodsId" />
+    <result column="type_id" jdbcType="INTEGER" property="typeId" />
+    <result column="goods_stock" jdbcType="INTEGER" property="goodsStock" />
+    <result column="goods_price" jdbcType="DECIMAL" property="goodsPrice" />
+    <result column="goods_releaseTime" jdbcType="DATE" property="goodsReleasetime" />
+    <result column="goods_name" jdbcType="VARCHAR" property="goodsName" />
+    <result column="goods_describe" jdbcType="VARCHAR" property="goodsDescribe" />
+    <result column="restaurant_id" jdbcType="INTEGER" property="restaurantId" />
+    <result column="goods_status" jdbcType="INTEGER" property="goodsStatus" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    goods_id, type_id, goods_stock, goods_price, goods_releaseTime, goods_name, goods_describe,
+    restaurant_id,goods_status
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from goods
+    where goods_id = #{goodsId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from goods
+    where goods_id = #{goodsId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="goods_id" keyProperty="goodsId" parameterType="com.example.takeout.entity.Goods" useGeneratedKeys="true">
+    insert into goods (type_id, goods_stock, goods_price,
+      goods_releaseTime, goods_name, goods_describe,
+      restaurant_id,goods_status)
+        values (#{typeId,jdbcType=INTEGER}, #{goodsStock,jdbcType=INTEGER}, #{goodsPrice,jdbcType=DECIMAL},
+      #{goodsReleasetime,jdbcType=DATE}, #{goodsName,jdbcType=VARCHAR}, #{goodsDescribe,jdbcType=VARCHAR},
+      #{restaurantId,jdbcType=INTEGER}, #{goodsStatus,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" keyColumn="goods_id" keyProperty="goodsId" parameterType="com.example.takeout.entity.Goods" useGeneratedKeys="true">
+    insert into goods
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="typeId != null">
+        type_id,
+      </if>
+      <if test="goodsStock != null">
+        goods_stock,
+      </if>
+      <if test="goodsPrice != null">
+        goods_price,
+      </if>
+      <if test="goodsReleasetime != null">
+        goods_releaseTime,
+      </if>
+      <if test="goodsName != null">
+        goods_name,
+      </if>
+      <if test="goodsDescribe != null">
+        goods_describe,
+      </if>
+      <if test="restaurantId != null">
+        restaurant_id,
+      </if>
+      <if test="goodsStatus != null">
+        goods_status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="typeId != null">
+        #{typeId,jdbcType=INTEGER},
+      </if>
+      <if test="goodsStock != null">
+        #{goodsStock,jdbcType=INTEGER},
+      </if>
+      <if test="goodsPrice != null">
+        #{goodsPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="goodsReleasetime != null">
+        #{goodsReleasetime,jdbcType=DATE},
+      </if>
+      <if test="goodsName != null">
+        #{goodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsDescribe != null">
+        #{goodsDescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="restaurantId != null">
+        #{restaurantId,jdbcType=INTEGER},
+      </if>
+      <if test="goodsStatus != null">
+        #{goods_status,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.takeout.entity.Goods">
+    update goods
+    <set>
+      <if test="typeId != null">
+        type_id = #{typeId,jdbcType=INTEGER},
+      </if>
+      <if test="goodsStock != null">
+        goods_stock = #{goodsStock,jdbcType=INTEGER},
+      </if>
+      <if test="goodsPrice != null">
+        goods_price = #{goodsPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="goodsReleasetime != null">
+        goods_releaseTime = #{goodsReleasetime,jdbcType=DATE},
+      </if>
+      <if test="goodsName != null">
+        goods_name = #{goodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsDescribe != null">
+        goods_describe = #{goodsDescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="restaurantId != null">
+        restaurant_id = #{restaurantId,jdbcType=INTEGER},
+      </if>
+      <if test="goodsStatus != null">
+        goods_status = #{goodsStatus,jdbcType=INTEGER},
+      </if>
+    </set>
+    where goods_id = #{goodsId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.takeout.entity.Goods">
+    update goods
+    set type_id = #{typeId,jdbcType=INTEGER},
+      goods_stock = #{goodsStock,jdbcType=INTEGER},
+      goods_price = #{goodsPrice,jdbcType=DECIMAL},
+      goods_releaseTime = #{goodsReleasetime,jdbcType=DATE},
+      goods_name = #{goodsName,jdbcType=VARCHAR},
+      goods_describe = #{goodsDescribe,jdbcType=VARCHAR},
+      restaurant_id = #{restaurantId,jdbcType=INTEGER},
+      goods_status = #{goodsStatus,jdbcType=INTEGER}
+    where goods_id = #{goodsId,jdbcType=INTEGER}
+  </update>
+</mapper>

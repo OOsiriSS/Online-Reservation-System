@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.takeout.mapper.RestaurantMapper">
+  <resultMap id="BaseResultMap" type="com.example.takeout.entity.Restaurant">
+    <id column="restaurant_id" jdbcType="INTEGER" property="restaurantId" />
+    <result column="restaurant_user" jdbcType="VARCHAR" property="restaurantUser" />
+    <result column="restaurant_pass" jdbcType="VARCHAR" property="restaurantPass" />
+    <result column="restaurant_address" jdbcType="VARCHAR" property="restaurantAddress" />
+    <result column="restaurant_type" jdbcType="VARCHAR" property="restaurantType" />
+    <result column="restaurant_status" jdbcType="INTEGER" property="restaurantStatus"/>
+    <result column="restaurant_name" jdbcType="VARCHAR" property="restaurantName"/>
+    <result column="restaurant_balance" jdbcType="DECIMAL" property="restaurantBalance"/>
+  </resultMap>
+  <sql id="Base_Column_List">
+    restaurant_id, restaurant_user, restaurant_pass, restaurant_address, restaurant_type, restaurant_status,restaurant_name,restaurant_balance
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from restaurant
+    where restaurant_id = #{restaurantId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from restaurant
+    where restaurant_id = #{restaurantId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="restaurant_id" keyProperty="restaurantId" parameterType="com.example.takeout.entity.Restaurant" useGeneratedKeys="true">
+    insert into restaurant (restaurant_user, restaurant_pass, restaurant_address,
+      restaurant_type, restaurant_status,restaurant_name,restaurant_balance)
+    values (#{restaurantUser,jdbcType=VARCHAR}, #{restaurantPass,jdbcType=VARCHAR}, #{restaurantAddress,jdbcType=VARCHAR},
+      #{restaurantType,jdbcType=VARCHAR}, #{restaurantStatus,jdbcType=INTEGER},#{restaurantName,jdbcType=VARCHAR},#{restaurantBalance,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" keyColumn="restaurant_id" keyProperty="restaurantId" parameterType="com.example.takeout.entity.Restaurant" useGeneratedKeys="true">
+    insert into restaurant
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="restaurantUser != null">
+        restaurant_user,
+      </if>
+      <if test="restaurantPass != null">
+        restaurant_pass,
+      </if>
+      <if test="restaurantAddress != null">
+        restaurant_address,
+      </if>
+      <if test="restaurantType != null">
+        restaurant_type,
+      </if>
+      <if test="restaurantStatus != null">
+        restaurant_status,
+      </if>
+      <if test="restaurantName != null">
+        restaurant_name,
+      </if>
+      <if test="restaurantBalance != null">
+        restaurant_balance,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="restaurantUser != null">
+        #{restaurantUser,jdbcType=VARCHAR},
+      </if>
+      <if test="restaurantPass != null">
+        #{restaurantPass,jdbcType=VARCHAR},
+      </if>
+      <if test="restaurantAddress != null">
+        #{restaurantAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="restaurantType != null">
+        #{restaurantType,jdbcType=VARCHAR},
+      </if>
+      <if test="restaurantStatus != null">
+        #{restaurantStatus,jdbcType=INTEGER},
+      </if>
+      <if test="restaurantName != null">
+        #{restaurantName,jdbcType=VARCHAR},
+      </if>
+      <if test="restaurantBalance != null">
+        #{restaurantBalance,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.takeout.entity.Restaurant">
+    update restaurant
+    <set>
+      <if test="restaurantUser != null">
+        restaurant_user = #{restaurantUser,jdbcType=VARCHAR},
+      </if>
+      <if test="restaurantPass != null">
+        restaurant_pass = #{restaurantPass,jdbcType=VARCHAR},
+      </if>
+      <if test="restaurantAddress != null">
+        restaurant_address = #{restaurantAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="restaurantType != null">
+        restaurant_type = #{restaurantType,jdbcType=VARCHAR},
+      </if>
+      <if test="restaurantStatus != null">
+        restaurant_status = #{restaurantStatus,jdbcType=INTEGER},
+      </if>
+      <if test="restaurantName != null">
+        restaurant_name = #{restaurantName,jdbcType=VARCHAR},
+      </if>
+      <if test="restaurantName != null">
+        restaurant_balance = #{restaurantBalance,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where restaurant_id = #{restaurantId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.takeout.entity.Restaurant">
+    update restaurant
+    set restaurant_user = #{restaurantUser,jdbcType=VARCHAR},
+      restaurant_pass = #{restaurantPass,jdbcType=VARCHAR},
+      restaurant_address = #{restaurantAddress,jdbcType=VARCHAR},
+      restaurant_type = #{restaurantType,jdbcType=VARCHAR},
+      restaurant_status = #{restaurantStatus,jdbcType=INTEGER},
+      restaurant_name = #{restaurantName,jdbcType=VARCHAR},
+      restaurant_balance = #{restaurantBalance,jdbcType=DECIMAL}
+    where restaurant_id = #{restaurantId,jdbcType=INTEGER}
+  </update>
+  <update id="updateMerchantsInfo" parameterType="com.example.takeout.entity.Restaurant">
+    update restaurant
+    <trim prefix="set" suffixOverrides=",">
+      <if test="restaurantPass != null">
+        restaurant_pass=#{restaurantPass},
+      </if>
+      <if test="restaurantAddress != null">
+        restaurant_address=#{restaurantAddress},
+      </if>
+      <if test="restaurantType != null">
+        restaurant_type=#{restaurantType},
+      </if>
+      <if test="restaurantStatus != null">
+        restaurant_status = #{restaurantStatus,jdbcType=INTEGER},
+      </if>
+      <if test="restaurantName != null">
+        restaurant_name=#{restaurantName},
+      </if>
+      <if test="restaurantName != null">
+        restaurant_balance=#{restaurantBalance},
+      </if>
+    </trim>
+    where restaurant_id=#{restaurantId}
+  </update>
+</mapper>
