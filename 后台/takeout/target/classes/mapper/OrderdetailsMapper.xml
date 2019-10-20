@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.takeout.mapper.OrderdetailsMapper">
+  <resultMap id="BaseResultMap" type="com.example.takeout.entity.Orderdetails">
+    <id column="details_id" jdbcType="INTEGER" property="detailsId" />
+    <result column="order_id" jdbcType="INTEGER" property="orderId" />
+    <result column="goods_id" jdbcType="INTEGER" property="goodsId" />
+    <result column="details_stock" jdbcType="INTEGER" property="detailsStock" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    details_id, order_id, goods_id, details_stock
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from orderdetails
+    where details_id = #{detailsId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from orderdetails
+    where details_id = #{detailsId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="details_id" keyProperty="detailsId" parameterType="com.example.takeout.entity.Orderdetails" useGeneratedKeys="true">
+    insert into orderdetails (order_id, goods_id, details_stock
+      )
+    values (#{orderId,jdbcType=INTEGER}, #{goodsId,jdbcType=INTEGER}, #{detailsStock,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="details_id" keyProperty="detailsId" parameterType="com.example.takeout.entity.Orderdetails" useGeneratedKeys="true">
+    insert into orderdetails
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="orderId != null">
+        order_id,
+      </if>
+      <if test="goodsId != null">
+        goods_id,
+      </if>
+      <if test="detailsStock != null">
+        details_stock,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="orderId != null">
+        #{orderId,jdbcType=INTEGER},
+      </if>
+      <if test="goodsId != null">
+        #{goodsId,jdbcType=INTEGER},
+      </if>
+      <if test="detailsStock != null">
+        #{detailsStock,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.takeout.entity.Orderdetails">
+    update orderdetails
+    <set>
+      <if test="orderId != null">
+        order_id = #{orderId,jdbcType=INTEGER},
+      </if>
+      <if test="goodsId != null">
+        goods_id = #{goodsId,jdbcType=INTEGER},
+      </if>
+      <if test="detailsStock != null">
+        details_stock = #{detailsStock,jdbcType=INTEGER},
+      </if>
+    </set>
+    where details_id = #{detailsId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.takeout.entity.Orderdetails">
+    update orderdetails
+    set order_id = #{orderId,jdbcType=INTEGER},
+      goods_id = #{goodsId,jdbcType=INTEGER},
+      details_stock = #{detailsStock,jdbcType=INTEGER}
+    where details_id = #{detailsId,jdbcType=INTEGER}
+  </update>
+  <select id="findDetailsByOrderId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List" />
+      from orderdetails where order_id=#{id}
+  </select>
+</mapper>

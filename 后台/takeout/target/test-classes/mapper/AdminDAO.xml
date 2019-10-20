@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.takeout.mapper.AdminDAO">
+  <resultMap id="BaseResultMap" type="com.example.takeout.entity.Admin">
+    <id column="admin_id" jdbcType="INTEGER" property="adminId" />
+    <result column="admin_user" jdbcType="VARCHAR" property="adminUser" />
+    <result column="admin_pass" jdbcType="VARCHAR" property="adminPass" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    admin_id, admin_user, admin_pass
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from admin
+    where admin_id = #{adminId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from admin
+    where admin_id = #{adminId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="admin_id" keyProperty="adminId" parameterType="com.example.takeout.entity.Admin" useGeneratedKeys="true">
+    insert into admin (admin_user, admin_pass)
+    values (#{adminUser,jdbcType=VARCHAR}, #{adminPass,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="admin_id" keyProperty="adminId" parameterType="com.example.takeout.entity.Admin" useGeneratedKeys="true">
+    insert into admin
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="adminUser != null">
+        admin_user,
+      </if>
+      <if test="adminPass != null">
+        admin_pass,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="adminUser != null">
+        #{adminUser,jdbcType=VARCHAR},
+      </if>
+      <if test="adminPass != null">
+        #{adminPass,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.takeout.entity.Admin">
+    update admin
+    <set>
+      <if test="adminUser != null">
+        admin_user = #{adminUser,jdbcType=VARCHAR},
+      </if>
+      <if test="adminPass != null">
+        admin_pass = #{adminPass,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where admin_id = #{adminId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.takeout.entity.Admin">
+    update admin
+    set admin_user = #{adminUser,jdbcType=VARCHAR},
+      admin_pass = #{adminPass,jdbcType=VARCHAR}
+    where admin_id = #{adminId,jdbcType=INTEGER}
+  </update>
+</mapper>
